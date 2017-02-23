@@ -93,12 +93,12 @@ export default class GitUtilities {
 
   @logger.logifySync()
   static getCurrentBranch() {
-    return ChildProcessUtilities.execSync("git symbolic-ref --short HEAD");
+    return ChildProcessUtilities.execSync("git branch | grep '^*' | sed 's/* //'");
   }
 
   @logger.logifySync()
   static getCurrentBranchDescription() {
-    return ChildProcessUtilities.execSync("git symbolic-ref --short -q HEAD");
+    return ChildProcessUtilities.execSync("git branch | grep '^*' | sed 's/* //'");
   }
 
   @logger.logifySync()
